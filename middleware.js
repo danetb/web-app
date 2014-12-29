@@ -9,7 +9,9 @@ module.exports = function(app){
 	app.post('/sign_up', function(req, res) {
 		var email = req.body.email;
 		var password = req.body.password;
-		r.sign_up(email,password);
+		r.sign_up(email,password, function(err) {
+			if(err)
+		});
 	});
 	app.get('/sign_in', function(req, res) {
 		res.render('sign_in');
