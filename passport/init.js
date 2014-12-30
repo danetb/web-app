@@ -1,4 +1,5 @@
-var User = require('../server/models/Users');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 module.exports = function(passport) {
 	passport.serializeUser(function(user, done) {
 		console.log('serializing user: ');
@@ -11,6 +12,6 @@ module.exports = function(passport) {
 			done(err, user);
 		})
 	})
-	require('strategies/sign_up')(passport);
-	require('strategies/sign_in')(passport);
+	require('strategies/sign_up')(passport, User);
+	require('strategies/sign_in')(passport, User);
 }

@@ -42,33 +42,41 @@ module.exports = function(app, passport){
 	});
 	app.put('/thread/:id/:tag', function(req, res) {
 		if(req.isAuthenticated) {
-			
+			//add the tag to database...
+		} else {
+			res.redirect('/sign_in');
 		}
-		//r.tag_comment
 	});
 	app.post('/thread', function(req, res) {
 		if(req.isAuthenticated) {
-			
-		}
-		//r.create_thread
+			//add the thread to database...	
+		} else {
+			res.redirect('/sign_in');
+		} 
 	});
 	app.get('/posts', function(req, res) {
 		if(req.isAuthenticated) {
-			
+			//retrieve all post belonging to user...
+		} else {
+			res.redirect('/sign_in');
 		}
-		//r.get_user_posts
 	});
 	app.get('/feed', function(req, res) {
 		if(req.isAuthenticated) {
-			
+			//retrieve user's feed from db...	
+		} else {
+			res.redirect('/sign_in');
 		}
-		//r.get_user_feed	
 	});
 	app.get('/thread/:id', function(req, res) {
 		if(req.isAuthenticated) {
-			
+			//get thread w/ id...
+		} else {
+			res.redirect('/sign_in');
 		}
-		//r.get_thread	
 	});
-	//Catch 
+	//Catch 404 
+	app.use(function(req, res) {
+		res.send('404 not found');
+	});
 };

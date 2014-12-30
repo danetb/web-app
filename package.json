@@ -10,6 +10,7 @@
         "cookie-parser": "*",
         "morgan": "*",
         "passport": "*",
-        "passport-local": "*"
+        "passport-local": "*",
+        "bcrypt-nodejs": "*"
     }
 }

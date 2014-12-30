@@ -2,12 +2,13 @@
 var compress = require('compression');
 var session = require('express-session');
 var logger = require('morgan');
+var flash = require('express-flash');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var MongoStore = require('connect-mongo')(session);
-var passport = require('passport');
+//var passport = require('passport');
 
-module.exports = function(app, config) {
+module.exports = function(app, config, passport) {
 			app.use(compress({
 				threshold: 1024
 			}));
@@ -24,6 +25,7 @@ module.exports = function(app, config) {
 				*/
 				secret: 'thisisasecret'
 			}));
+			app.use(flash());
 			app.use(passport.initialize());
 			app.use(passport.session());
 //			app.use(express.methodOverride());

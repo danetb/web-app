@@ -5,6 +5,7 @@ var http = require('http');
 //var cookieParser = require('cookie-parser');
 var config = require('./config/config');
 var app = express();
+var passport = require('passport');
 require('./config/db')(config);
 var modelsPath = __dirname + '/server/models';
 fs.readdirSync(modelsPath).forEach(function (file) {
@@ -12,8 +13,9 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 		require(modelsPath + '/' + file);
 	}
 });
-require('./config/express')(app, config);
-require('./middleware')(app);
+require('./config/express')(app, config, passport);
+require('./passport/init')(passport, mongoose);
+require('./middleware')(app, passport);
 var server = http.Server(app);
 server.listen(config.port);
 console.log('App started on port ' + config.port); 
