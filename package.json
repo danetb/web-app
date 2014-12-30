@@ -1,0 +1,15 @@
+{
+    "name": "web-app",
+    "dependencies": {
+        "express": "*",
+        "mongoose": "*",
+        "connect-mongo": "*",
+        "express-session": "*",
+        "compression": "*",
+        "body-parser": "*",
+        "cookie-parser": "*",
+        "morgan": "*",
+        "passport": "*",
+        "passport-local": "*"
+    }
+}
